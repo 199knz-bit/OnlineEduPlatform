@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OnlineEduPlatform.Models.Course>
+
+<h1>Всички курсове</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Създай нов курс</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Курс</th>
+            <th>Учител</th>
+            <th>Записани студенти</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr class="course-row" onclick="window.location='@Url.Action("Details", "Courses", new { id = course.Id })'" style="cursor: pointer;">
+                <td>@course.Name</td>
+                <td>@course.Teacher?.Name</td>
+                <td>@course.Students.Count</td>
+                <td class="delete-cell">
+                    <form asp-action="Delete" asp-route-id="@course.Id" method="post"
+                          onsubmit="return confirm('Сигурни ли сте, че искате да изтриете този курс?');"
+                          onclick="event.stopPropagation();">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-danger delete-btn">Изтрий</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Скриваме бутона по подразбиране */
+    .delete-btn {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    /* Показваме го при hover на реда */
+    .course-row:hover .delete-btn {
+        opacity: 1;
+    }
+
+    /* По избор: леко оцветяване на реда при hover */
+    .course-row:hover {
+        background-color: #f8f9fa;
+    }
+</style>
