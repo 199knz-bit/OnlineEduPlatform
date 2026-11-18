@@ -43,7 +43,7 @@ public class CoursesController : Controller
         return View(course);
     }
 
-    // GET: /Courses/Enroll/5
+    // GET: /Courses/Enroll/Id
     public async Task<IActionResult> Enroll(int id)
     {
         var course = await _context.Courses
@@ -60,7 +60,7 @@ public class CoursesController : Controller
         return View();
     }
 
-    // POST: /Courses/Enroll/5
+    // POST: /Courses/Enroll/Id
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Enroll(int id, int studentId)
