@@ -28,7 +28,7 @@
 
 4. **Отворете програмата в браузър:**
    ```bash
-   (http://localhost:8080/Courses)
+   [http](http://localhost:8080/Courses)
 
 ## Stopping and deleting
 1. **За спиране на приложението:**
