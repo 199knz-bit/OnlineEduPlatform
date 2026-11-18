@@ -27,8 +27,7 @@
    docker run -d -p 8080:8080 -v learning_data:/app/data --name onlineedu onlineeduplatform
 
 4. **Отворете програмата в браузър:**
-   ```bash
-   [http](http://localhost:8080/Courses)
+   http://localhost:8080/Courses
 
 ## Stopping and deleting
 1. **За спиране на приложението:**
