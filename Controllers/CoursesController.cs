@@ -11,7 +11,7 @@ public class CoursesController : Controller
 
     public CoursesController(AppDbContext context) => _context = context;
 
-    // GET: /Courses
+    // GET Courses
     public async Task<IActionResult> Index()
     {
         var courses = await _context.Courses
@@ -21,14 +21,14 @@ public class CoursesController : Controller
         return View(courses);
     }
 
-    // GET: /Courses/Create
+    // GET Courses/Create
     public IActionResult Create()
     {
         ViewBag.Teachers = _context.Teachers.ToList();
         return View();
     }
 
-    // POST: /Courses/Create
+    // POST Courses/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Course course)
@@ -43,7 +43,7 @@ public class CoursesController : Controller
         return View(course);
     }
 
-    // GET: /Courses/Enroll/Id
+    // GET Courses/Enroll
     public async Task<IActionResult> Enroll(int id)
     {
         var course = await _context.Courses
@@ -60,7 +60,7 @@ public class CoursesController : Controller
         return View();
     }
 
-    // POST: /Courses/Enroll/Id
+    // POST Courses/Enroll
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Enroll(int id, int studentId)
@@ -81,7 +81,7 @@ public class CoursesController : Controller
         return RedirectToAction(nameof(Details), new { id=id});
     }
 
-    // GET: /Courses/Details/5
+    // GET Courses/Details
     public async Task<IActionResult> Details(int id)
     {
         var course = await _context.Courses
@@ -94,6 +94,7 @@ public class CoursesController : Controller
         return View(course);
     }
 
+    //POST Delete
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
