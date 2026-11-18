@@ -1,7 +1,7 @@
 # OnlineEduPlatform
 Проста онлайн платформа за обучение и етап Е1 от моят окончателен курсов проект по софутерни технологии. 
 
-# Features
+## Features
  - Преглед на списък с всички курсове.
  - Създаване на нов курс с избор на учител, който ще го ръководи.
  - Преглед на детайли на курс.
@@ -17,7 +17,29 @@
    ```bash
    git clone https://github.com/199knz-bit/OnlineEduPlatform.git
    cd OnlineEduPlatform
+   
+2. **Изградете Docker контейнера:**
+   ```bash
+   docker build -t onlineeduplatform .
 
-3. Изградете Docker образа:
-docker build -t onlineeduplatform .
+3. **Стартирайте контейнера:**
+   ```bash
+   docker run -d -p 8080:8080 -v learning_data:/app/data --name onlineedu onlineeduplatform
 
+4. **Отворете програмата в браузър:**
+   ```bash
+   [http](http://localhost:8080/Courses)
+
+##Stop
+1. **За спиране на приложението:**
+   ```bash
+   docker stop onlineedu
+
+2. **За да рестартирате приложението:**
+   ```bash
+   docker start onlineedu
+
+3. **За да изтриете контейнера и базата данни:**
+   ```bash
+   docker rm -f onlineedu
+   docker volume rm learning_data
