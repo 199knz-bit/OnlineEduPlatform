@@ -30,7 +30,7 @@
    ```bash
    [http](http://localhost:8080/Courses)
 
-##Stop
+## Stopping and deleting
 1. **За спиране на приложението:**
    ```bash
    docker stop onlineedu
