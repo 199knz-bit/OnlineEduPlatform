@@ -12,7 +12,11 @@
         <label asp-for="TeacherId" class="form-label">Учител</label>
         <select asp-for="TeacherId" class="form-select" required>
             <option value="">-- Избери учител --</option>
-            @foreach (var teacher in ViewBag.Teachers as List<OnlineEduPlatform.Models.Teacher>)
+            @{
+                var teachers = ViewBag.Teachers as List<OnlineEduPlatform.Models.Teacher> 
+                ?? new List<OnlineEduPlatform.Models.Teacher>();
+            }
+            @foreach (var teacher in teachers)
             {
                 <option value="@teacher.Id">@teacher.Name</option>
             }
